@@ -1,0 +1,27 @@
+.img {
+    width: 12%;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.cat_label {
+    width: 12%;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+}
+
+.id_label {
+    width: 4%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.header {
+    position: sticky;
+}
