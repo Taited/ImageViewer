@@ -1,5 +1,5 @@
 .img {
-    width: 12%;
+    width: 10%;
 }
 
 ul {
@@ -7,11 +7,29 @@ ul {
     padding-left: 0;
 }
 
+.vertical {
+    display: flex;
+    align-items: center; /* 使得vertical内的项目在垂直方向上居中对齐 */
+}
+
 .cat_label {
-    width: 12%;
+    width: 10%;
     display: inline-block;
     text-align: center;
+    align-items: center;
+    vertical-align:middle;
     overflow: hidden;
+    max-width: 10%;
+}
+
+.txt_label {
+    flex: 1; /* flex:1 表示在分配多余空间时，txt_label将占用多余的空间 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    max-width: 10%; /* 设置最大宽度为页面宽度的10% */
 }
 
 .id_label {
@@ -23,5 +41,8 @@ ul {
 }
 
 .header {
+    background-color: #ADD8E6; /* 设置背景色为淡蓝色 */
     position: sticky;
+    top: 0; /* 当滚动页面时，header会始终置顶 */
+    z-index: 1; /* 确保header始终在其他内容之上 */
 }

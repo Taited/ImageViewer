@@ -1,5 +1,14 @@
 <html>
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DB33G935YG"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DB33G935YG');
+    </script>
     <title>Item Details</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
 </head>
@@ -14,12 +23,25 @@
     <ul>
     {% for row_data in page_data %}
     <li>
+        <div class="vertical">
         <label class="id_label"> {{row_data[0]}} </label>
         {% for item_data in row_data[1] %}
-        <img class="img" src={{item_data}}>
+            {% if item_data[0] %}
+            <div class="txt_label"> {{item_data[1]}} </div>
+            {% else %}
+            <img class="img" src={{item_data[1]}}>
+            {% endif %}
         {% endfor %}
+        </div>
     </li>
     {% endfor %}
     </ul>
+
+    <!-- page navigation -->
+    <label><a href={{last_page}}>[Last Page]</a></label>
+    {% for page_id_url in page_list %}
+        <label><a href={{page_id_url[1]}}>[{{page_id_url[0]}}]</a></label>
+    {% endfor %}
+    <label><a href={{next_page}}>[Next Page]</a></label>
 </body>
 </html>
