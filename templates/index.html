@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DB33G935YG"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DB33G935YG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script>
+        async function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const formData = new FormData();
+            formData.append("username", username);
+            formData.append("password", password);
+
+            const response = await fetch("/login", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem("access_token", data.access_token);
+                window.location.assign("/image/"); // Redirect to the /image/ page
+            } else {
+                alert("Login failed. Please check your username and password.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <h2>Login</h2>
+    <div>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+    </div>
+</body>
+</html>

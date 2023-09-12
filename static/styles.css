@@ -45,4 +45,5 @@ ul {
     position: sticky;
     top: 0; /* 当滚动页面时，header会始终置顶 */
     z-index: 1; /* 确保header始终在其他内容之上 */
+    display: flex;
 }
