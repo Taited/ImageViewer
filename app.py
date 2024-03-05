@@ -96,8 +96,7 @@ async def render_page(request: Request, proj_name: str, page: int = 1):
 async def download_files_stream(project: str, category: str, item_name: str):
     file_like = osp.join(DIR, project, category, item_name)
     if not osp.exists(file_like):
-        item_name = item_name.replace('.png', '')
-        item_name = item_name.zfill(4) + '.png'
+        item_name = item_name.replace('.png', '.jpg')
         file_like = osp.join(DIR, project, category, item_name)
     return FileResponse(file_like)
 
