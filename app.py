@@ -1,16 +1,12 @@
 import os.path as osp
 import math
 import uvicorn
-from fastapi import FastAPI, Request, Depends, HTTPException, status, APIRouter, Form
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import OAuth2PasswordRequestForm
-from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from utils import get_file_names, concat_page_data
-from datetime import timedelta
-from api_token import *
-
 
 DIR = '/mnt/tedsun/cafidata/SSDiff_vis'
 TOTAL_NUM = 11000#1700
@@ -18,8 +14,6 @@ PAGE_LIMIT = 20
 TOTAL_PAGE = math.ceil(TOTAL_NUM / PAGE_LIMIT)
 
 app = FastAPI()
-app_protected = APIRouter(dependencies=[Depends(verify_token), Depends(verify_key)])
-app.include_router(app_protected)
 # Set up CORS middleware
 app.add_middleware(
     CORSMiddleware,
