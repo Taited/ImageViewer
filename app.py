@@ -14,7 +14,7 @@ from starlette.responses import RedirectResponse
 from utils import concat_page_data, get_file_names
 
 JSON_DIR = 'jsons'
-IMAGE_DIR = '/data_lg/wentai/codes/vton/experiments/'
+IMAGE_DIR = './'
 TOTAL_NUM = 11000  # 1700
 PAGE_LIMIT = 20
 TOTAL_PAGE = math.ceil(TOTAL_NUM / PAGE_LIMIT)

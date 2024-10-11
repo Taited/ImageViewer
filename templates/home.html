@@ -1,0 +1,56 @@
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DB33G935YG"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DB33G935YG');
+    </script>
+    <title>Home</title>
+    <!-- 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        li {
+            padding: 10px;
+            flex: 1 0 200px; /* flex-grow, flex-shrink, flex-basis */
+            text-align: center;
+            box-sizing: border-box;
+            margin: 5px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h2>Projects</h2>
+    <ul>
+    {% for project in project_list %}
+    <li>
+        <a href={{project[1]}}>{{project[0]}}</a>
+    </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

@@ -20,7 +20,7 @@ def concat_page_data(data_dict: dict,
     assert id_begin >= 0, 'The begin id could not less than 1 but get'
     ': {}'.format(id_begin)
     page_data = []
-    for id_name in range(id_begin, id_begin + fetch_num + 1):
+    for id_name in range(id_begin, id_begin + fetch_num):
         row_data = []
         for category_name in category_list:
             if category_name == 'text_info' or category_name == 'txt':
