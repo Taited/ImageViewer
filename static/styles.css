@@ -1,5 +1,5 @@
 .img {
-    width: 10%;
+    width: 30%;
 }
 
 ul {
@@ -13,13 +13,13 @@ ul {
 }
 
 .cat_label {
-    width: 10%;
+    width: 30%;
     display: inline-block;
     text-align: center;
     align-items: center;
     vertical-align:middle;
     overflow: hidden;
-    max-width: 10%;
+    max-width: 30%;
 }
 
 .txt_label {
