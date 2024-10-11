@@ -1,6 +1,7 @@
 import json
 import math
 import os.path as osp
+import time
 
 import uvicorn
 from fastapi import FastAPI, Request
@@ -8,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from starlette.responses import RedirectResponse
 
 from utils import concat_page_data, get_file_names
 
@@ -38,14 +40,13 @@ def pagination(page: int = 1, limit: int = 10, total: int = TOTAL_NUM):
     return begin_id, limit
 
 
-@app.get('/', response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse('index.html', {'request': request})
+@app.get('/')
+async def redirect_to_image():
+    return RedirectResponse(url='/image/')
 
 
 @app.get('/image/', response_class=HTMLResponse)
 async def render_home(request: Request):
-    #   current_user: User = Depends(get_current_active_user)):
 
     project_name = get_file_names(JSON_DIR)
     project_list = []
@@ -95,7 +96,8 @@ async def render_page(request: Request, proj_name: str, page: int = 1):
             'category': category,
             'page_list': page_list,
             'last_page': last_page_url,
-            'next_page': next_page_url
+            'next_page': next_page_url,
+            'time': time.time()
         })
 
 
@@ -106,11 +108,9 @@ async def download_files_stream(item_name: str):
 
 
 if __name__ == '__main__':
-    uvicorn.run(
-        'app:app',
-        reload=True,
-        port=5001,
-        host='0.0.0.0',
-        # ssl_keyfile="./select.key",
-        # ssl_certfile="./select.crt"
-    )
+    uvicorn.run('app:app',
+                reload=True,
+                port=5001,
+                host='0.0.0.0',
+                ssl_keyfile='./select.key',
+                ssl_certfile='./select.crt')
