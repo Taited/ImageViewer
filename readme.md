@@ -32,5 +32,3 @@ Access the API at:
 ```
 https://localhost:5001/image/
 ```
-
-Replace `{item_name}` with the image filename in `IMAGE_DIR`.
