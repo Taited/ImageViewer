@@ -1,11 +1,5 @@
 # FastAPI Setup
 
-## Requirements
-
-- Python 3.x
-- `uvicorn` (`pip install uvicorn`)
-- SSL key and certificate files (`select.key`, `select.crt`)
-
 ## How to Run
 
 1. Install dependencies:
